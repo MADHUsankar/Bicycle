@@ -1,0 +1,72 @@
+ 
+<form (submit)="registration()" #formData='ngForm'>
+  <p>
+    Email ID:<input 
+    type="text" 
+    name="emailid" 
+    required 
+    minlength="4" 
+    maxlength="24"
+    required pattern="^([A-Za-z0-9._\-]+)@([a-zA-Z0-9._\-]+)\.([a-zA-Z]+)$" 
+    [(ngModel)]="reg_user.emailid"
+    #emailid='ngModel'
+  />
+  </p>
+ <span style="color: red;" *ngIf="emailid.errors && emailid.touched">Email id should atleast be 4 characters long</span> <br>
+<p>
+  First Name:<input 
+    type="text" 
+    name="firstname" 
+    required 
+    minlength="4" 
+    maxlength="24"
+    [(ngModel)]="reg_user.firstname"
+    #firstname='ngModel'
+  />
+    </p>
+<span style="color: red;" *ngIf="firstname.errors && firstname.touched">First Name should atleast be 4 characters long</span> <br>
+  <p>
+    Last Name:
+  <input 
+    type="text" 
+    name="lastname" 
+    required 
+    minlength="4" 
+    maxlength="24"
+    [(ngModel)]="reg_user.lastname"
+    #lastname='ngModel'
+  />
+    </p>
+<span style="color: red;" *ngIf="lastname.errors && lastname.touched">Last Name  should atleast be 4 characters long</span> <br>
+  <p> Password
+  <input 
+    type="text" 
+    name="password" 
+    required 
+    minlength="10" 
+    maxlength="24"
+    pattern="^([a-zA-Z0-9@*#]{8,15})$"
+    [(ngModel)]="reg_user.password"
+    #password='ngModel'
+  />
+    </p>
+<span style="color: red;" *ngIf="password.errors && password.touched">Password  should atleast be 4 characters long</span> <br>
+    <p> Password Confirmation
+  <input 
+    type="text" 
+    name="passwordconfirmation" 
+    required 
+    minlength="10" 
+    maxlength="24"
+    validateEqual="password"
+    pattern="^([a-zA-Z0-9@*#]{8,15})$"
+    [(ngModel)]="reg_user.passwordconfirmation"
+    #passwordconfirmation='ngModel'
+  />
+ <span style="color: red;" *ngIf="passwordconfirmation.errors && password.touched && passwordconfirmation.dirty ">Password does not match</span> <br>
+ 
+ <button type="submit" [disabled]="!formData.valid">Register</button>
+</form>
+  
+
+ 

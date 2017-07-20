@@ -1,0 +1,37 @@
+ 
+      <span style="color:red;" *ngIf='login_error.status && login_error.message._body < 5'>Email or password is incorrect</span>
+  <span style="color:red;" *ngIf='login_error.status && login_error.message._body >= 5'>You have made too many failures, login is disabled for one hour</span>
+  
+    <br>
+<form (submit)="login()" #formData='ngForm'>
+  <p>
+    Email ID:<input 
+    type="text" 
+    name="emailid" 
+    required 
+    minlength="4" 
+     required pattern="^([A-Za-z0-9._\-]+)@([a-zA-Z0-9._\-]+)\.([a-zA-Z]+)$" 
+    maxlength="24"
+    
+    [(ngModel)]="login_user.emailid"
+    #emailid='ngModel'
+  />
+  </p>
+ <span style="color: red;" *ngIf="emailid.errors && (emailid.dirty ||emailid.touched)">Email id should atleast be 4 characters long</span> <br>
+<p> Password
+  <input 
+    type="text" 
+    name="password" 
+    required 
+    minlength="10" 
+    maxlength="24"
+    pattern="^([a-zA-Z0-9@*#]{8,15})$"
+    [(ngModel)]="login_user.password"
+    #password='ngModel'
+  />
+    </p>
+<span style="color: red;" *ngIf="password.errors && password.touched">Password  should atleast be 4 characters long</span> <br>
+ 
+  <button type="submit" [disabled]="!formData.valid">Login!</button>
+</form>
+  
