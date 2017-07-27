@@ -2,28 +2,29 @@ const mongoose = require("mongoose")
 const User = mongoose.model("User")
 
 module.exports = {
-	register: (req, res) => {
-		User.findOne({emailid: req.body.emailid})
-			.then(data => {
-				if(data){
-					req.session.user_id = data._id
-					res.json(true)
-				} else {
-					let new_user = new User({emailid:req.body.emailid,firstname:req.body.firstname,lastname:req.body.lastname,password:req.body.password})
-					new_user.save()
-						.then(() => {
-							req.session.user_id = new_user._id
-							console.log(req.session.user_id)
-							res.json(true)
-						})
-						.catch((err) => { res.status(500).json(err); });
-				}
-			})
-			
-	},
-		logout: (req, res) => {
+   register: (req, res, next) => {
+        let u = new User(req.body);
+        console.log("insertbef",u)
+        u.save()
+        .then((user) => { 
+            console.log("insert",user)
+            req.session.name = user.first_name;
+            req.session.user_id = user._id;
+            res.json(true); })
+        .catch((err) => { res.status(409).json(err) });
+    },
+    logout: (req, res) => {
 		req.session.destroy()
-		res.redirect("/")},
+        res.redirect("/")}
+,
+ checkadmin: (req, res, next) => {
+     if (req.session.admin="admin"){
+           console.log("admin get");
+        res.json(true)
+     }
+ },
+
+
 	 login: function(req, res, next){
         console.log("in login function ************************")
         if(!req.session.fails){
@@ -56,16 +57,23 @@ module.exports = {
                     } else {
                         console.log("login success controller");
                         console.log(user._id);
-                        req.session.logid = user._id;
+                        req.session.name = user.first_name;
+                        req.session.user_id = user._id;
+                        req.session.user_id = user._id;
+                        if (user.emailid= "admin@admin.com")
+                            {
+                                req.session.admin = "admin"
+                                console.log("admin set",  req.session.admin);
+                            
+                            }
                         res.json(true);
-                        console.log(req.session.logid);
+                        console.log("session login",req.session.user_id);
                     }
                 }
             })
         
      
 		}}
-	
-	
+    
 	// }
 }

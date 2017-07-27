@@ -1,4 +1,14 @@
- 
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <meta charset="utf-8"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>ecommerce App</title>
+    <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+<body>
       <span style="color:red;" *ngIf='login_error.status && login_error.message._body < 5'>Email or password is incorrect</span>
   <span style="color:red;" *ngIf='login_error.status && login_error.message._body >= 5'>You have made too many failures, login is disabled for one hour</span>
   
@@ -20,7 +30,7 @@
  <span style="color: red;" *ngIf="emailid.errors && (emailid.dirty ||emailid.touched)">Email id should atleast be 4 characters long</span> <br>
 <p> Password
   <input 
-    type="text" 
+    type="password" 
     name="password" 
     required 
     minlength="10" 
@@ -34,4 +44,7 @@
  
   <button type="submit" [disabled]="!formData.valid">Login!</button>
 </form>
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      

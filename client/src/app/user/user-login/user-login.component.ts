@@ -22,7 +22,17 @@ login_error = {status:false, message:{}};
     login(){
     console.log("login attempt", this.login_user)
     this.user_service.login(this.login_user)
-    .then(() => {console.log("login success in componnent"); this.router.navigate(['listings'])})
+    .then(() =>
+     {console.log("login success in componnent");
+     
+      //  this.user_service.checkadmin()       
+      //  .then(()=>
+      //   {console.log("admin")
+        this.router.navigate(['mylisting'])
+        })
+          //  else{
+    //    console.log("non-admin")
+    //    this.router.navigate(['shoppage'])}})
     .catch(err => {console.log("login fail component", err); this.login_error.status = true; this.login_error.message=err})
 
   }
