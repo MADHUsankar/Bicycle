@@ -26,6 +26,15 @@
     font-size: 15px;
 }
 
+.cartonly{
+     height: 700px;
+    width: 500px;
+    border-color: #8BC34A;
+    border-style: dotted;
+    position: relative;
+    right: -700px;
+    top:-300px;
+}
 .flipkart-navbar-button {
     background-color: #ffe11b;
     border: 1px solid #ffe11b;
@@ -66,6 +75,13 @@
     vertical-align: middle;
     margin-right: 8px;
 }
+.item-numbershop{
+    font: 20px;
+}
+.item-count{
+    font-size: 20px;
+}
+
 
 .item-number {
     border-radius: 3px;

@@ -44,6 +44,7 @@ export class UserService {
  }
 
  checkadmin(){
+   console.log("admin service")
    return this.http.get("/checkadmin") .map(data => data.json())
       .toPromise()
       

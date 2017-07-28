@@ -34,7 +34,7 @@ module.exports = {
         .catch((err) => { res.status(502).json(err); });
     },
         getAllBikes: (req, res, next) => {
-        Bike.find({})
+        Bike.find({}) 
         .then((allBikes) => { res.json(allBikes); })
         .catch((err) => { res.status(502).json(err); });
     },

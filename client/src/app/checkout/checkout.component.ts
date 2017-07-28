@@ -8,6 +8,7 @@ import { productService } from "./../product.service";
 import { ShoppingCartService } from "./../shoppingcart.service";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
+import {Router} from "@angular/router" 
 
 interface ICartItemWithProduct extends CartItem {
   product: Bicycle;
@@ -30,11 +31,18 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   public constructor(private productsService: productService,
                      private deliveryOptionService: DeliveryOptionsDataService,
-                     private shoppingCartService: ShoppingCartService) {
+                     private shoppingCartService: ShoppingCartService, private router:Router) {
   }
 
   public emptyCart(): void {
     this.shoppingCartService.empty();
+  }
+
+    public emptyCartcheckout(): void {
+        this.shoppingCartService.empty();
+       this.router.navigate(['/confirmed']);
+      
+
   }
 
   public setDeliveryOption(option: DeliveryOption): void {

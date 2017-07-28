@@ -16,7 +16,8 @@ export class MylistingComponent implements OnInit {
   constructor(private user_service : UserService, private router:Router) { }
 
   ngOnInit() {
-    this.getBikes()
+    // this.getBikes()
+     this.getAllBikes()
   }
 
   getBikes() {
@@ -24,20 +25,25 @@ export class MylistingComponent implements OnInit {
     .then((bikes) => { this.myBikes = bikes; })
     .catch((err) => { console.log(err); });
   }
+  getAllBikes() {
+    this.user_service.getAllBikes()
+    .then((bikes) => { this.myBikes = bikes; })
+    .catch((err) => { console.log(err); });
+  }
 
   addBike() {
     this.user_service.addBike(this.newBike)
-    .then(() => { this.getBikes(); })
+    .then(() => { this.getAllBikes(); })
     .catch((err) => { console.log(err); });
   }
  
  updateBike(idx){   this.user_service.updateBike(this.myBikes[idx])
-    .then(() => { this.getBikes(); })
+    .then(() => { this.getAllBikes(); })
     .catch((err) => { console.log(err); });
   }
 
  deleteBike(idx){   this.user_service.deleteBike(this.myBikes[idx])
-    .then(() => { this.getBikes(); })
+    .then(() => { this.getAllBikes(); })
     .catch((err) => { console.log(err); });
   }
 

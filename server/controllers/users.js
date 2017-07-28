@@ -18,10 +18,17 @@ module.exports = {
         res.redirect("/")}
 ,
  checkadmin: (req, res, next) => {
-     if (req.session.admin="admin"){
-           console.log("admin get");
-        res.json(true)
+     console.log("admin controller",req.session.admin);
+     if (req.session.admin=="admin"){
+           console.log("admin get controller");
+           res.json(true)
+        
      }
+        else{
+             console.log("nonadmin get controller");
+           res.status(409).json(req.session.admin) 
+        }
+     
  },
 
 
@@ -60,7 +67,7 @@ module.exports = {
                         req.session.name = user.first_name;
                         req.session.user_id = user._id;
                         req.session.user_id = user._id;
-                        if (user.emailid= "admin@admin.com")
+                        if (user.emailid== "admin@admin.com")
                             {
                                 req.session.admin = "admin"
                                 console.log("admin set",  req.session.admin);

@@ -3,4 +3,5 @@ export class CartItem {
   public quantity: number = 0;
   public img:string;
   public description:string;
+  public price:number;
 }

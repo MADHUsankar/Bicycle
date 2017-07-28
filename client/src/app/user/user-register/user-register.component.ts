@@ -18,7 +18,7 @@ export class UserRegisterComponent implements OnInit {
     console.log(this.reg_user)
     this.user_service.registration(this.reg_user)
     .then(()=> {
-      this.router.navigate(['/listings'])
+      this.router.navigate(['/shoppage'])
     })
     .catch(err => console.log(err))
     this.reg_user = new User

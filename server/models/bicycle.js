@@ -7,6 +7,6 @@ const BicycleSchema = new mongoose.Schema({
     image: {type: String},
     location: {type: String},
     user_id: {type: String}
-});
+}, {timestamps:true});
 
 mongoose.model('Bicycle', BicycleSchema);

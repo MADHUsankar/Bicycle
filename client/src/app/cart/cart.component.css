@@ -200,7 +200,9 @@
     transition: 0.3s
 }
 
-
+.item-count{
+    font-size: 20px;
+}
 /* -- */
 
 .js-cart-total{
